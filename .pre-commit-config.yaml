@@ -1,0 +1,36 @@
+# Runs the same checks as `npm run gate`, so a commit cannot be greener than the
+# gate. See README.md.
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=2048']
+
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npm run check
+        language: system
+        pass_filenames: false
+      - id: eslint
+        name: eslint
+        entry: npm run lint
+        language: system
+        pass_filenames: false
+      - id: tsc
+        name: tsc
+        entry: npm run types
+        language: system
+        pass_filenames: false
+      - id: vitest
+        name: vitest
+        entry: npm test
+        language: system
+        pass_filenames: false
