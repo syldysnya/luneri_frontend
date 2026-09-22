@@ -4,6 +4,9 @@ dist
 dist-ssr
 .next/
 *.local
+next-env.d.ts
+coverage
+tsconfig.tsbuildinfo
 
 # Secrets — THIS REPO IS PUBLIC. Nothing secret ever lands here.
 .env
@@ -26,3 +29,6 @@ pnpm-debug.log*
 
 # Claude Code machine-local settings (per-machine permission grants)
 .claude/settings.local.json
+
+# Subagent-driven-development scratch (ledger, briefs, review packages)
+.superpowers/
